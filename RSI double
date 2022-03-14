@@ -1,0 +1,16 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// ©Cerfidus_crypto
+
+//@version=5
+indicator("RSI double")
+n1=input(14,"Période RSI1")
+rsi1=ta.rsi(close,n1)
+n2=input(30,"Période RSI2")
+rsi2=ta.rsi(close,n2)
+plot(rsi1,color=color.black)
+plot(rsi2,color=color.red)
+
+Buy = ta.crossover(rsi1,rsi2)
+plotchar(Buy, "Go Long",  "▲", location.bottom, color.lime, size = size.tiny)
+Sell = ta.crossunder(rsi1,rsi2)
+plotchar(Sell, "Go Short",  "▼", location.bottom, color.lime, size = size.tiny)
